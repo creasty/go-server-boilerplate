@@ -11,6 +11,8 @@ services:
     extra_hosts:
       localhost: "${DOCKER_HOST_IP}"
     command: tail -f /dev/null
+    links:
+      - sample_db
 
   sample_db:
     image: postgres:9.6.1-alpine
@@ -23,6 +25,7 @@ services:
     environment:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=
+      - POSTGRES_DB=sample
 
   volume:
     image: alpine:latest
