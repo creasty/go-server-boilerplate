@@ -1,0 +1,22 @@
+package: github.com/creasty/go-server-boilerplate
+import:
+- package: github.com/creasty/configo
+- package: github.com/creasty/gin-contrib
+  subpackages:
+  - app_error
+  - recovery
+- package: github.com/creasty/panicsync
+- package: github.com/ghodss/yaml
+  version: ^1.0.0
+- package: github.com/gin-gonic/gin
+  version: ^1.1.4
+- package: github.com/honeybadger-io/honeybadger-go
+  version: ^0.1.0
+- package: github.com/jinzhu/gorm
+  version: ^1.0.0
+- package: github.com/k0kubun/pp
+  version: ^2.3.0
+- package: github.com/lib/pq
+- package: github.com/mitchellh/panicwrap
+- package: github.com/rs/cors
+  version: ^1.0.0

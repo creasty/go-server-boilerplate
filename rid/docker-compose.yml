@@ -1,0 +1,32 @@
+version: '2.1'
+
+services:
+  app:
+    image: creasty/go-server-boilerplate:dev
+    build: .
+    volumes:
+      - ..:/app
+    volumes_from:
+      - volume
+    extra_hosts:
+      localhost: "${DOCKER_HOST_IP}"
+    command: tail -f /dev/null
+
+  sample_db:
+    image: postgres:9.6.1-alpine
+    volumes_from:
+      - volume
+    expose:
+      - 5432
+    ports:
+      - 5432
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=
+
+  volume:
+    image: alpine:latest
+    volumes:
+      - /app/vendor
+      - /var/lib/postgresql/data
+    command: tail -f /dev/null
