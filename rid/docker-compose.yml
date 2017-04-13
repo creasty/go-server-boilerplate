@@ -10,9 +10,11 @@ services:
       - volume
     extra_hosts:
       localhost: "${DOCKER_HOST_IP}"
-    command: tail -f /dev/null
     links:
       - sample_db
+    ports:
+      - 5000:5000
+    command: tail -f /dev/null
 
   sample_db:
     image: postgres:9.6.1-alpine
