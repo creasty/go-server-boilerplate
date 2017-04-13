@@ -1,5 +1,5 @@
-hash: 411fb6fec362bfa942914406a13086e07825d44575e6b17bedaa7f981f91d64e
-updated: 2017-04-13T06:45:48.344197746Z
+hash: 07535dd37beeffc8fd9579eca5a12a6306ce7af3fea9f6497466938befc3f27f
+updated: 2017-04-13T07:13:50.167286349Z
 imports:
 - name: github.com/asaskevich/govalidator
   version: 2c14e1cca90af49b3b21fe2d7aaa8cc7f9da2ff8
@@ -14,7 +14,12 @@ imports:
 - name: github.com/creasty/go-server-boilerplate
   version: 15d032da5fbcc5241ca884744b0212a7c7cad023
   subpackages:
-  - service/hbsvc
+  - model
+  - server
+  - store
+  - server/middleware
+  - server/route
+  - server/util
 - name: github.com/creasty/panicsync
   version: b8fcc116448dd177a128ab4eb2d83b75dd210d87
 - name: github.com/ghodss/yaml
@@ -24,6 +29,8 @@ imports:
   subpackages:
   - binding
   - render
+- name: github.com/go-errors/errors
+  version: 8fa88b06e5974e97fbf9899a7f86a344bfd1f105
 - name: github.com/golang/protobuf
   version: 2402d76f3d41f928c7902a765dfc872356dd3aad
   subpackages:
@@ -48,6 +55,10 @@ imports:
   - oid
 - name: github.com/manucorporat/sse
   version: ee05b128a739a0fb76c7ebd3ae4810c1de808d6d
+- name: github.com/maruel/panicparse
+  version: ae43f192cef2add653fe1481a3070ed00a4a6981
+  subpackages:
+  - stack
 - name: github.com/mattn/go-colorable
   version: ded68f7a9561c023e790de24279db7ebf473ea80
 - name: github.com/mattn/go-isatty

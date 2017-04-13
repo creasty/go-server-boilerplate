@@ -20,3 +20,7 @@ import:
 - package: github.com/mitchellh/panicwrap
 - package: github.com/rs/cors
   version: ^1.0.0
+- package: github.com/maruel/panicparse
+  subpackages:
+  - stack
+- package: github.com/go-errors/errors
