@@ -1,13 +1,9 @@
 package server
 
 import (
-	"strconv"
-
 	"github.com/creasty/gin-contrib/app_error"
 	"github.com/creasty/gin-contrib/recovery"
-	"github.com/creasty/panicsync"
 	"github.com/gin-gonic/gin"
-	"github.com/honeybadger-io/honeybadger-go"
 
 	"github.com/creasty/go-server-boilerplate/server/middleware"
 	"github.com/creasty/go-server-boilerplate/server/route"
@@ -31,8 +27,6 @@ func drawRoutes(s *Server, r *gin.Engine) {
 }
 
 func drawAPIRoutes(s *Server, r *gin.Engine) {
-	r.Use(middleware.CorsWrapper(s.Config.Cors.AllowedOrigins))
-
 	r.GET("/ping", route.Ping)
 }
 
