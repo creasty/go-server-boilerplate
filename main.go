@@ -44,7 +44,7 @@ func start(c *model.Config) {
 	s := &server.Server{Config: c}
 
 	// Database
-	s.SampleDB = store.NewDatabase(c.sampleURL, true)
+	s.SampleDB = store.NewDatabase(c.SampleDatabaseURL, true)
 	defer s.SampleDB.Close()
 
 	s.Run()
