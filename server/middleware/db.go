@@ -6,20 +6,20 @@ import (
 )
 
 const (
-	sampleDbContextName = "SampleDB"
+	sampleDBContextName = "SampleDB"
 )
 
 // SetSampleDBWrapper sets a connection of Sample database to the context
 func SetSampleDBWrapper(db *gorm.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		c.Set(notificationsDbContextName, db)
+		c.Set(sampleDBContextName, db)
 		c.Next()
 	}
 }
 
 // GetSampleDB retrives a connection from the context
 func GetSampleDB(c *gin.Context) *gorm.DB {
-	v := c.MustGet(sampleDbContextName)
+	v := c.MustGet(sampleDBContextName)
 
 	db, ok := v.(*gorm.DB)
 	if !ok {
