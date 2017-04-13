@@ -1,0 +1,85 @@
+hash: 411fb6fec362bfa942914406a13086e07825d44575e6b17bedaa7f981f91d64e
+updated: 2017-04-13T06:45:48.344197746Z
+imports:
+- name: github.com/asaskevich/govalidator
+  version: 2c14e1cca90af49b3b21fe2d7aaa8cc7f9da2ff8
+- name: github.com/creasty/configo
+  version: 7c5b248ed88ee439b1c0869f05fcf6415a7deeea
+- name: github.com/creasty/gin-contrib
+  version: 3f1709e701b8da228eee927cc46b42234ac7d7fc
+  subpackages:
+  - app_error
+  - recovery
+  - readbody
+- name: github.com/creasty/go-server-boilerplate
+  version: 15d032da5fbcc5241ca884744b0212a7c7cad023
+  subpackages:
+  - service/hbsvc
+- name: github.com/creasty/panicsync
+  version: b8fcc116448dd177a128ab4eb2d83b75dd210d87
+- name: github.com/ghodss/yaml
+  version: 0ca9ea5df5451ffdf184b4428c902747c2c11cd7
+- name: github.com/gin-gonic/gin
+  version: e2212d40c62a98b388a5eb48ecbdcf88534688ba
+  subpackages:
+  - binding
+  - render
+- name: github.com/golang/protobuf
+  version: 2402d76f3d41f928c7902a765dfc872356dd3aad
+  subpackages:
+  - proto
+- name: github.com/honeybadger-io/honeybadger-go
+  version: 36d30005a9a829178efbdf9a78e29edd136a569b
+- name: github.com/jinzhu/gorm
+  version: 5174cc5c242a728b435ea2be8a2f7f998e15429b
+- name: github.com/jinzhu/inflection
+  version: 1c35d901db3da928c72a72d8458480cc9ade058f
+- name: github.com/joho/godotenv
+  version: 325433c502d409f3c3dc820098fb0cfe38d98dc7
+- name: github.com/k0kubun/pp
+  version: 027a6d1765d673d337e687394dbe780dd64e2a1e
+- name: github.com/kardianos/osext
+  version: 9d302b58e975387d0b4d9be876622c86cefe64be
+- name: github.com/kelseyhightower/envconfig
+  version: 8bf4bbfc795e2c7c8a5ea47b707453ed019e2ad4
+- name: github.com/lib/pq
+  version: 2704adc878c21e1329f46f6e56a1c387d788ff94
+  subpackages:
+  - oid
+- name: github.com/manucorporat/sse
+  version: ee05b128a739a0fb76c7ebd3ae4810c1de808d6d
+- name: github.com/mattn/go-colorable
+  version: ded68f7a9561c023e790de24279db7ebf473ea80
+- name: github.com/mattn/go-isatty
+  version: fc9e8d8ef48496124e79ae0df75490096eccf6fe
+- name: github.com/mattn/go-zglob
+  version: 95345c4e1c0ebc9d16a3284177f09360f4d20fab
+  subpackages:
+  - fastwalk
+- name: github.com/mitchellh/panicwrap
+  version: fce601fe55579125e1b3cb0b992287e7290f7b83
+- name: github.com/pborman/uuid
+  version: 1b00554d822231195d1babd97ff4a781231955c9
+- name: github.com/rs/cors
+  version: a62a804a8a009876ca59105f7899938a1349f4b3
+- name: github.com/rs/xhandler
+  version: ed27b6fd65218132ee50cd95f38474a3d8a2cd12
+- name: github.com/shirou/gopsutil
+  version: dfbb3e40da8d6fcd1aa0d87003e965fe0ca745ea
+  subpackages:
+  - load
+  - mem
+  - internal/common
+- name: golang.org/x/net
+  version: f315505cf3349909cdf013ea56690da34e96a451
+  subpackages:
+  - context
+- name: golang.org/x/sys
+  version: f3918c30c5c2cb527c0b071a27c35120a6c0719a
+  subpackages:
+  - unix
+- name: gopkg.in/go-playground/validator.v8
+  version: c193cecd124b5cc722d7ee5538e945bdb3348435
+- name: gopkg.in/yaml.v2
+  version: cd8b52f8269e0feb286dfeef29f8fe4d5b397e0b
+testImports: []
