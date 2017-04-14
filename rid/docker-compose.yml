@@ -18,8 +18,8 @@ services:
 
   sample_db:
     image: postgres:9.6.1-alpine
-    volumes_from:
-      - volume
+    volumes:
+      - ../tmp/sample_db:/var/lib/postgresql/data
     expose:
       - 5432
     ports:
@@ -33,5 +33,4 @@ services:
     image: alpine:latest
     volumes:
       - /app/vendor
-      - /var/lib/postgresql/data
     command: tail -f /dev/null
