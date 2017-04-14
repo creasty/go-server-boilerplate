@@ -1,4 +1,4 @@
-package model
+package system
 
 // Config stores general setting parameters that are loaded from
 // enviroment variables, a dotenv file, and yaml files

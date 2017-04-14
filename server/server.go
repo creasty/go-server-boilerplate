@@ -7,8 +7,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
 
-	"github.com/creasty/go-server-boilerplate/model"
 	"github.com/creasty/go-server-boilerplate/server/util"
+	"github.com/creasty/go-server-boilerplate/type/system"
 )
 
 // Timeout durations for reading a request body or writing a response body
@@ -19,7 +19,7 @@ const (
 
 // Server holds the global contexts and clients that have any connections reused over the requests
 type Server struct {
-	Config   *model.Config
+	Config   *system.Config
 	SampleDB *gorm.DB
 }
 

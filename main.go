@@ -11,9 +11,9 @@ import (
 	"github.com/honeybadger-io/honeybadger-go"
 	"github.com/mitchellh/panicwrap"
 
-	"github.com/creasty/go-server-boilerplate/model"
 	"github.com/creasty/go-server-boilerplate/server"
 	"github.com/creasty/go-server-boilerplate/store"
+	"github.com/creasty/go-server-boilerplate/type/system"
 )
 
 func init() {
@@ -40,7 +40,7 @@ func main() {
 	start(c)
 }
 
-func start(c *model.Config) {
+func start(c *system.Config) {
 	s := &server.Server{Config: c}
 
 	// Database
@@ -50,8 +50,8 @@ func start(c *model.Config) {
 	s.Run()
 }
 
-func getConfig() *model.Config {
-	c := &model.Config{}
+func getConfig() *system.Config {
+	c := &system.Config{}
 	if err := configo.Load(c, configo.Option{
 		Dir: "./data/config",
 	}); err != nil {
@@ -60,7 +60,7 @@ func getConfig() *model.Config {
 	return c
 }
 
-func supervisePanic(c *model.Config) {
+func supervisePanic(c *system.Config) {
 	pw := &panicwrap.WrapConfig{
 		Handler: func(output string) {
 			honeybadger.Notify(
