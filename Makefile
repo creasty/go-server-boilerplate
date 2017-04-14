@@ -32,3 +32,7 @@ lint:
 .PHONY: test
 test: lint
 	@go test $(GO_TEST_FLAGS) $(PACKAGE_DIRS)
+
+.PHONY: run
+run: $(BIN)
+	@$(BIN)
