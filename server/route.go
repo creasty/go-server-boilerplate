@@ -7,16 +7,16 @@ import (
 
 	"github.com/creasty/go-server-boilerplate/server/middleware"
 	"github.com/creasty/go-server-boilerplate/server/route"
-	"github.com/creasty/go-server-boilerplate/service/hbsvc"
+	hb_svc "github.com/creasty/go-server-boilerplate/service/hb"
 )
 
 func drawRoutes(s *Server, r *gin.Engine) {
 	// Middlewares
 	r.Use(recovery.WrapWithCallback(func(c *gin.Context, body []byte, err interface{}) {
-		hbsvc.NotifyGinError(err, body, c)
+		hb_svc.NotifyGinError(err, body, c)
 	}))
 	r.Use(app_error.WrapWithCallback(func(c *gin.Context, body []byte, err error) {
-		hbsvc.NotifyGinError(err, body, c)
+		hb_svc.NotifyGinError(err, body, c)
 	}))
 	r.Use(middleware.SetConfigWrapper(s.Config))
 	r.Use(middleware.SetSampleDBWrapper(s.SampleDB))
