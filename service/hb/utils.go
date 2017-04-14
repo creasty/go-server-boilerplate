@@ -1,4 +1,4 @@
-package hbsvc
+package service
 
 import (
 	"strconv"
