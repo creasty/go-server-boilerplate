@@ -3,20 +3,16 @@ package util
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gin-gonic/gin"
 )
 
 // MethodOverrider is a http.Handler for gin engine that supports method overriding
 type MethodOverrider struct {
-	engine *gin.Engine
+	handler http.Handler
 }
 
 // NewMethodOverrider creates a new http.Handler
-func NewMethodOverrider(engine *gin.Engine) MethodOverrider {
-	return MethodOverrider{
-		engine: engine,
-	}
+func NewMethodOverrider(handler http.Handler) MethodOverrider {
+	return MethodOverrider{handler: handler}
 }
 
 // ServeHTTP implements an interface of http.Handler.
@@ -39,5 +35,5 @@ func (m MethodOverrider) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	m.engine.ServeHTTP(w, r)
+	m.handler.ServeHTTP(w, r)
 }
