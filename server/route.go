@@ -7,7 +7,7 @@ import (
 
 	"github.com/creasty/go-server-boilerplate/server/middleware"
 	"github.com/creasty/go-server-boilerplate/server/route"
-	system_route "github.com/creasty/go-server-boilerplate/server/route"
+	system_route "github.com/creasty/go-server-boilerplate/server/route/system"
 	hb_service "github.com/creasty/go-server-boilerplate/service/hb_service"
 )
 
