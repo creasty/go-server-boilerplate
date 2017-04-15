@@ -8,7 +8,7 @@ import (
 )
 
 // GetAppInfo returns metrics about the current running go process
-func (s System) GetAppInfo(c *gin.Context) {
+func GetAppInfo(c *gin.Context) {
 	mem := runtime.MemStats{}
 	runtime.ReadMemStats(&mem)
 

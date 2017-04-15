@@ -7,6 +7,7 @@ import (
 
 	"github.com/creasty/go-server-boilerplate/server/middleware"
 	"github.com/creasty/go-server-boilerplate/server/route"
+	system_route "github.com/creasty/go-server-boilerplate/server/route"
 	hb_svc "github.com/creasty/go-server-boilerplate/service/hb"
 )
 
@@ -23,15 +24,15 @@ func drawRoutes(s *Server, r *gin.Engine) {
 
 	// Routes
 	drawAPIRoutes(s, r)
-	drawSystemRoutes(s, r.Group("/system"), route.System{})
+	drawSystemRoutes(s, r.Group("/system"))
 }
 
-func drawAPIRoutes(s *Server, r *gin.Engine) {
+func drawAPIRoutes(s *Server, r gin.IRouter) {
 	r.GET("/ping", route.Ping)
 }
 
-func drawSystemRoutes(s *Server, r *gin.RouterGroup, system route.System) {
+func drawSystemRoutes(s *Server, r gin.IRouter) {
 	r.Use(gin.BasicAuth(gin.Accounts{s.Config.BasicAuthUsername: s.Config.BasicAuthPassword}))
 
-	r.GET("/appinfo", system.GetAppInfo)
+	r.GET("/appinfo", system_route.GetAppInfo)
 }
