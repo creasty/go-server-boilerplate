@@ -36,7 +36,7 @@ func main() {
 	})
 	defer honeybadger.Monitor()
 
-	supervisePanic(c)
+	supervisePanic()
 	start(c)
 }
 
@@ -60,7 +60,7 @@ func getConfig() *system.Config {
 	return c
 }
 
-func supervisePanic(c *system.Config) {
+func supervisePanic() {
 	pw := &panicwrap.WrapConfig{
 		Handler: func(output string) {
 			honeybadger.Notify(
