@@ -2,7 +2,7 @@ package service
 
 // Service is an interface for ...
 type Service interface {
-	Perform(req *Request) error
+	Perform(req *Request) (*Response, error)
 }
 
 type service struct {
@@ -16,6 +16,6 @@ func New(c Context) Service {
 	}
 }
 
-func (s *service) Perform(req *Request) error {
-	return nil
+func (s *service) Perform(req *Request) (*Response, error) {
+	return &Response{}, nil
 }
