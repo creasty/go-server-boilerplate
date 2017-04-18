@@ -12,7 +12,6 @@ import (
 )
 
 func drawRoutes(s *Server, r *gin.Engine) {
-	// Middlewares
 	r.Use(recovery.WrapWithCallback(func(c *gin.Context, body []byte, err interface{}) {
 		hb_service.NotifyGinError(err, body, c)
 	}))
@@ -22,17 +21,14 @@ func drawRoutes(s *Server, r *gin.Engine) {
 	r.Use(middleware.SetConfigWrapper(s.Config))
 	r.Use(middleware.SetSampleDBWrapper(s.SampleDB))
 
-	// Routes
-	drawAPIRoutes(s, r)
-	drawSystemRoutes(s, r.Group("/system"))
-}
+	{
+		r.GET("/ping", route.Ping)
+	}
 
-func drawAPIRoutes(s *Server, r gin.IRouter) {
-	r.GET("/ping", route.Ping)
-}
+	{
+		r := r.Group("/system")
+		r.Use(gin.BasicAuth(gin.Accounts{s.Config.BasicAuthUsername: s.Config.BasicAuthPassword}))
 
-func drawSystemRoutes(s *Server, r gin.IRouter) {
-	r.Use(gin.BasicAuth(gin.Accounts{s.Config.BasicAuthUsername: s.Config.BasicAuthPassword}))
-
-	r.GET("/appinfo", system_route.GetAppInfo)
+		r.GET("/appinfo", system_route.GetAppInfo)
+	}
 }
