@@ -19,8 +19,7 @@ func drawRoutes(r *gin.Engine, appContext *system.AppContext) {
 	r.Use(app_error.WrapWithCallback(func(c *gin.Context, body []byte, err error) {
 		hb_service.NotifyGinError(err, body, c)
 	}))
-	r.Use(middleware.SetConfigWrapper(appContext.Config))
-	r.Use(middleware.SetSampleDBWrapper(appContext.SampleDB))
+	r.Use(middleware.SetAppContextWrapper(appContext))
 
 	{
 		r.GET("/ping", route.Ping)
