@@ -5,7 +5,6 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/jinzhu/gorm"
 
 	"github.com/creasty/go-server-boilerplate/server/util"
 	"github.com/creasty/go-server-boilerplate/type/system"
@@ -17,24 +16,18 @@ const (
 	ServerWriteTimeout = 120 * time.Second
 )
 
-// Server holds the global contexts and clients that have any connections reused over the requests
-type Server struct {
-	Config   *system.Config
-	SampleDB *gorm.DB
-}
-
 // Run initializes routings and serves the server
-func (s *Server) Run() {
-	if s.Config.IsProduction() {
+func Run(appContext *system.AppContext) {
+	if appContext.Config.IsProduction() {
 		gin.SetMode(gin.ReleaseMode)
 	}
 
 	r := gin.Default()
 
-	drawRoutes(s, r)
+	drawRoutes(r, appContext)
 
 	httpServer := &http.Server{
-		Addr:           s.Config.Host,
+		Addr:           appContext.Config.Host,
 		Handler:        util.NewMethodOverrider(r),
 		ReadTimeout:    ServerReadTimeout,
 		WriteTimeout:   ServerWriteTimeout,

@@ -41,13 +41,12 @@ func main() {
 }
 
 func start(c *system.Config) {
-	s := &server.Server{Config: c}
+	ctx := &system.AppContext{Config: c}
 
-	// Database
-	s.SampleDB = store.NewDatabase(c.SampleDatabaseURL, true)
-	defer s.SampleDB.Close()
+	ctx.SampleDB = store.NewDatabase(c.SampleDatabaseURL, true)
+	defer ctx.SampleDB.Close()
 
-	s.Run()
+	server.Run(ctx)
 }
 
 func getConfig() *system.Config {

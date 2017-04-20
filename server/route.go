@@ -9,17 +9,18 @@ import (
 	"github.com/creasty/go-server-boilerplate/server/route"
 	system_route "github.com/creasty/go-server-boilerplate/server/route/system"
 	hb_service "github.com/creasty/go-server-boilerplate/service/hb_service"
+	"github.com/creasty/go-server-boilerplate/type/system"
 )
 
-func drawRoutes(s *Server, r *gin.Engine) {
+func drawRoutes(r *gin.Engine, appContext *system.AppContext) {
 	r.Use(recovery.WrapWithCallback(func(c *gin.Context, body []byte, err interface{}) {
 		hb_service.NotifyGinError(err, body, c)
 	}))
 	r.Use(app_error.WrapWithCallback(func(c *gin.Context, body []byte, err error) {
 		hb_service.NotifyGinError(err, body, c)
 	}))
-	r.Use(middleware.SetConfigWrapper(s.Config))
-	r.Use(middleware.SetSampleDBWrapper(s.SampleDB))
+	r.Use(middleware.SetConfigWrapper(appContext.Config))
+	r.Use(middleware.SetSampleDBWrapper(appContext.SampleDB))
 
 	{
 		r.GET("/ping", route.Ping)
@@ -27,7 +28,9 @@ func drawRoutes(s *Server, r *gin.Engine) {
 
 	{
 		r := r.Group("/system")
-		r.Use(gin.BasicAuth(gin.Accounts{s.Config.BasicAuthUsername: s.Config.BasicAuthPassword}))
+		r.Use(gin.BasicAuth(gin.Accounts{
+			appContext.Config.BasicAuthUsername: appContext.Config.BasicAuthPassword,
+		}))
 
 		r.GET("/appinfo", system_route.GetAppInfo)
 	}
